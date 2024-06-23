@@ -1,9 +1,11 @@
-import './style.css';
-import data from './card-list.json';
+import "./style.css";
+import data from "./card-list.json";
 import { importAll } from "../../functions";
 import Validation from "./Validation";
 
-const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(
+  require.context("./images", false, /\.(png|jpe?g|svg)$/),
+);
 
 export default class CardValidation {
   constructor(container) {
@@ -22,19 +24,19 @@ export default class CardValidation {
     this.valueForm = this.container.querySelector(CardValidation.valueForm);
     this.btnForm = this.container.querySelector(CardValidation.btnForm);
 
-    this.form.addEventListener('submit', this.onSubmit);
+    this.form.addEventListener("submit", this.onSubmit);
   }
 
   static get form() {
-    return '.form';
+    return ".form";
   }
 
   static get valueForm() {
-    return '.form__input-text';
+    return ".form__input-text";
   }
 
   static get btnForm() {
-    return '.form__btn';
+    return ".form__btn";
   }
 
   static get markup() {
@@ -50,16 +52,16 @@ export default class CardValidation {
   }
 
   renderCardList() {
-    const _container = document.createElement('ul');
-    _container.classList.add('cards');
+    const _container = document.createElement("ul");
+    _container.classList.add("cards");
     this.cardsList = _container;
 
-    this.cards.forEach(card => {
-      const _image = document.createElement('img');
+    this.cards.forEach((card) => {
+      const _image = document.createElement("img");
       _image.src = images[card.image];
       _image.alt = card.name;
-      _image.className = 'cards__card-image';
-      const _element = document.createElement('li');
+      _image.className = "cards__card-image";
+      const _element = document.createElement("li");
       _element.className = `cards__card cards__card-${card.name}`;
       _element.appendChild(_image);
       _container.appendChild(_element);
@@ -69,8 +71,8 @@ export default class CardValidation {
   }
 
   bindCardList() {
-    const _container = this.container.querySelector('.validator__container');
-    const _element = _container.querySelector('.validator__title');
+    const _container = this.container.querySelector(".validator__container");
+    const _element = _container.querySelector(".validator__title");
     const _list = this.renderCardList();
 
     _container.insertBefore(_list, _element.nextSibling);
@@ -87,10 +89,10 @@ export default class CardValidation {
     if (this.card) {
       const _elements = this.cardsList.querySelectorAll(`.cards__card`);
 
-      _elements.forEach(_element => {
+      _elements.forEach((_element) => {
         const classList = _element.classList;
         if (!classList.contains(`cards__card-${this.card.name}`)) {
-          classList.add('cards__card-filter');
+          classList.add("cards__card-filter");
         }
       });
     }
@@ -98,8 +100,10 @@ export default class CardValidation {
 
   setDefault() {
     this.card = undefined;
-    const _elements = this.cardsList.querySelectorAll('.cards__card');
-    _elements.forEach(_element => _element.classList.remove('cards__card-filter'));
+    const _elements = this.cardsList.querySelectorAll(".cards__card");
+    _elements.forEach((_element) =>
+      _element.classList.remove("cards__card-filter"),
+    );
   }
 
   defineCard(numberCard) {
@@ -107,7 +111,10 @@ export default class CardValidation {
 
     if (validation.algorithmLuhn()) {
       for (const card of this.cards) {
-        if (validation.checkLength(card.rule.length) && validation.checkIin(card.rule.iin)) {
+        if (
+          validation.checkLength(card.rule.length) &&
+          validation.checkIin(card.rule.iin)
+        ) {
           this.card = card;
           break;
         }

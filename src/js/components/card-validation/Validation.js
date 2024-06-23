@@ -1,5 +1,4 @@
 export default class Validation {
-
   constructor(number) {
     this.number = number;
   }
@@ -7,7 +6,7 @@ export default class Validation {
   algorithmLuhn() {
     const input = this.number;
     const number = input.toString();
-    const digits = number.replace(/\D/g, '').split('').map(Number);
+    const digits = number.replace(/\D/g, "").split("").map(Number);
     let sum = 0;
     let isSecond = false;
     for (let i = digits.length - 1; i >= 0; i--) {
@@ -49,12 +48,12 @@ export default class Validation {
   }
 
   getRules(rule) {
-    return rule.includes(',') ? rule.split(',') : [rule];
+    return rule.includes(",") ? rule.split(",") : [rule];
   }
 
   getRuleRange(rule) {
-    if (rule.includes('-')) {
-      return rule.split('-').map(Number);
+    if (rule.includes("-")) {
+      return rule.split("-").map(Number);
     } else {
       return null;
     }
