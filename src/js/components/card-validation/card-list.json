@@ -1,0 +1,58 @@
+[
+  {
+    "name": "mir",
+    "image": "mir.png",
+    "rule": {
+      "length": "16-19",
+      "iin": "2200-2204"
+    }
+  },
+  {
+    "name": "visa",
+    "image": "visa.png",
+    "rule": {
+      "length": "13,16,19",
+      "iin": "4"
+    }
+  },
+  {
+    "name": "mastercard",
+    "image": "mastercard.png",
+    "rule": {
+      "length": "16",
+      "iin": "2221-2720,51-55"
+    }
+  },
+  {
+    "name": "jcb",
+    "image": "jcb.png",
+    "rule": {
+      "length": "16-19",
+      "iin": "3528-3589"
+    }
+  },
+  {
+    "name": "discover",
+    "image": "discover.png",
+    "rule": {
+      "length": "16-19",
+      "iin": "6011,644-649,65,622126-622925"
+    }
+  },
+  {
+    "name": "diners-club",
+    "image": "diners-club.png",
+    "rule": {
+      "length": "14-19",
+      "iin": "36"
+    }
+  },
+  {
+    "name": "american-express",
+    "image": "american-express.png",
+    "rule": {
+      "length": "15",
+      "iin": "34,37"
+    }
+  }
+]
